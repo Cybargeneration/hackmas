@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why not Include a File?</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('/static/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        .input-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .input-field {
+            margin: 10px 10px 10px 0;
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .hint-btn {
+            background-color: #f0ad4e;
+        }
+        .hint-btn:hover {
+            background-color: #ec971f;
+        }
+        .success {
+            margin-top: 20px;
+            font-size: 16px;
+            color: lightgreen;
+            white-space: pre-wrap;
+        }
+        .error {
+            margin-top: 20px;
+            font-size: 16px;
+            color: red;
+        }
+    </style>
+    <script>
+        function showHint() {
+            alert("Hint: There are some roads you have to walk alone");
+        }
+
+        // Redirect to the next page after 3 seconds
+        function autoRedirect() {
+            setTimeout(() => {
+                window.location.href = "/command_injection";
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Email from Your Coworker</h1>
+        <p>
+            "Hey, we need to break into the new administrator's office to see what he's hiding. I think the usernames are stored in one of the system files. You’ll also need to figure out the admin's name. I hear usernames are stored in a certain folder in Linux, find it!!"
+        </p>
+        <hr>
+
+        <!-- View File Form -->
+        <form method="POST">
+            <div class="input-container">
+                <input
+                    type="text"
+                    name="file"
+                    class="input-field"
+                    placeholder="Enter encoded file path ()"
+                >
+                <button type="submit" name="view_file">View File</button>
+            </div>
+        </form>
+
+        <!-- Display File Content -->
+        {% if content %}
+            <p class="success">File Contents:<br>{{ content }}</p>
+        {% endif %}
+
+        <!-- Admin Name Form -->
+        {% if content %}
+            <form method="POST">
+                <div class="input-container">
+                    <input
+                        type="text"
+                        name="admin_name"
+                        class="input-field"
+                        placeholder="Enter admin name"
+                    >
+                    <button type="submit" name="submit_name">Submit Name</button>
+                </div>
+            </form>
+        {% endif %}
+
+        <!-- Messages -->
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% elif admin_success %}
+            <p class="success">Correct admin name! Redirecting to the next challenge...</p>
+            <script>autoRedirect();</script>
+        {% endif %}
+
+        <button type="button" class="hint-btn" onclick="showHint()">Hint</button>
+    </div>
+</body>
+</html>
+

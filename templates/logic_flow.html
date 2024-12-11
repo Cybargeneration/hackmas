@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipper Zero</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('/static/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .product-title {
+            font-size: 24px;
+            margin: 15px 0 10px;
+            color: #f9a825;
+        }
+        .product-description {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #4caf50;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 15px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .hint {
+            font-size: 14px;
+            color: #ddd;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .hint:hover {
+            color: #fff;
+        }
+        .error, .success {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: lightgreen;
+        }
+    </style>
+    <script>
+        // Redirect to the next challenge after 3 seconds
+        function redirectToNextChallenge() {
+            setTimeout(() => {
+                window.location.href = "/xss";
+            }, 3000);
+        }
+
+        // Show the hint
+        function showHint() {
+            alert("Inspect the price field in DevTools");
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img src="/static/flipper_zero.jpg" alt="Flipper Zero" class="product-image">
+        <h1 class="product-title">Flipper Zero</h1>
+        <p class="product-description">
+            The Flipper Zero is a portable multi-tool for pentesters and hardware hackers. Your team needs it for a pentesting job. You have to get it for them without paying for it. Use your Dev Tools`
+        </p>
+        <p class="price">$500</p>
+        <form method="POST">
+            <input type="hidden" name="price" value="500">
+            <button type="submit">Buy Now</button>
+        </form>
+        {% if success %}
+            <p class="success">{{ success }}</p>
+            <script>redirectToNextChallenge();</script>
+        {% elif error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <p class="hint" onclick="showHint()">Need a hint? Click here!</p>
+    </div>
+</body>
+</html>
+

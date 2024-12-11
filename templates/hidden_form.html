@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('/static/tech_background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        .form-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #00bcd4;
+        }
+        .form-description {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        button, input {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        button {
+            background-color: #ff5722;
+            color: white;
+        }
+        button:hover {
+            background-color: #e64a19;
+        }
+        .error, .success {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: lightgreen;
+        }
+    </style>
+    <script>
+        function calculatePrice() {
+            let price = parseFloat(document.getElementById("price").value);
+            let discount = parseFloat(document.getElementById("hidden_discount").value);
+            let finalPrice = price - discount;
+            document.getElementById("final_price").value = finalPrice;
+        }
+        document.addEventListener("DOMContentLoaded", calculatePrice);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="form-title">Hidden Form Challenge</h1>
+        <p class="form-description">
+            There is a particular hacking tool being sold for $500. We need it for an operation but cant afford it. Try your best to get it for free, Inspect carefully!
+        </p>
+        <form method="POST">
+            <input type="hidden" id="price" name="price" value="500">
+            <input type="hidden" id="hidden_discount" name="discount" value="0">
+            <input type="hidden" id="final_price" name="final_price" value="500">
+            <button type="submit">Buy Now</button>
+        </form>
+        {% if success %}
+            <p class="success">{{ success }}</p>
+        {% elif error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+

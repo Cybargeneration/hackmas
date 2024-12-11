@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackmas Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: left;
+            max-width: 800px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            margin-top: 10px;
+        }
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+        input[type="text"], input[type="checkbox"] {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            font-size: 14px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hackmas Challenge Rules</h1>
+        <ul>
+            <li><b>Eligibility:</b>
+                <ul>
+                    <li>Open to all skill levels; participants must register through the official form.</li>
+                    <li>Only valid registration will be considered for participation.</li>
+                </ul>
+            </li>
+            <li><b>General Rules:</b>
+                <ul>
+                    <li>Participants must solve challenges independently.</li>
+                    <li>Use of publicly available resources is allowed, but sharing solutions with others is not.</li>
+                    <li>Malicious or unethical behavior will result in immediate disqualification.</li>
+                </ul>
+            </li>
+            <li><b>Reporting Requirements:</b>
+                <ul>
+                    <li>A detailed report of the challenge, including steps taken, tools used, and insights gained, is compulsory.</li>
+                </ul>
+            </li>
+            <li><b>Time and Submission:</b>
+                <ul>
+                    <li>The challenge runs from the 11th to the 20th of December, 2024.</li>
+                    <li>Reports and solutions must be submitted before the 20th of December.</li>
+                </ul>
+            </li>
+            <li><b>Winner Selection:</b>
+                <ul>
+                    <li>Two winners will be selected based on:
+                        <ul>
+                            <li>Creativity and clarity in the submitted report.</li>
+                            <li>Accuracy of solutions.</li>
+                            <li>Speed of completion.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><b>Disqualification:</b>
+                <ul>
+                    <li>Violating any rules.</li>
+                    <li>Sharing solutions during the challenge.</li>
+                    <li>Failing to submit the required report.</li>
+                </ul>
+            </li>
+            <li><b>Confidentiality:</b>
+                <ul>
+                    <li>Participants must not disclose any challenge details or solutions publicly.</li>
+                </ul>
+            </li>
+        </ul>
+        <form method="POST">
+            <input type="text" name="full_name" placeholder="Enter your full name" required>
+            <br>
+            <label>
+                <input type="checkbox" name="agree" required>
+                I agree to the terms and rules of the Hackmas Challenge.
+            </label>
+            <br>
+            <button type="submit">Register and Start</button>
+        </form>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+

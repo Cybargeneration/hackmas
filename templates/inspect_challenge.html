@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspect all Areas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hack The Door Challenge</h1>
+	<p>Soldier, your team has identified a major terrorist hideout, but they cannot gain entrance into the building, it appears it has a keypad. One of the soldiers think you can hack it, he also overheard the terrorists say the door takes 0 seconds to open and when it opens it shows 'ACCESS REFUTE' on the keypad. Most times the door status might still remian as locked all you have to do is change that.</p>
+        <p><strong>Hint:</strong> The door requires three values to be modified.</p>
+        <p>Once you've made the necessary changes, enter the modified values below to validate your solution.</p>
+        
+        <form method="POST">
+            <div class="form-group">
+                <label for="status">Modified Status</label>
+                <input type="text" id="status" name="status" placeholder="Enter value" required>
+            </div>
+            <div class="form-group">
+                <label for="door_status">Modified Door Status</label>
+                <input type="text" id="door_status" name="door_status" placeholder="Enter value" required>
+            </div>
+            <div class="form-group">
+                <label for="timeout">Modified Timeout</label>
+                <input type="text" id="timeout" name="timeout" placeholder="Enter value" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+

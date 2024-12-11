@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recover the Vault Key</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('/static/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        .input-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .input-field {
+            margin: 10px 10px 10px 0;
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .success {
+            margin-top: 20px;
+            font-size: 16px;
+            color: lightgreen;
+        }
+        .error {
+            margin-top: 20px;
+            font-size: 16px;
+            color: red;
+        }
+    </style>
+    <script>
+        function showHint() {
+            alert("Hint: Hack your way to Success");
+        }
+
+        // Redirect to the next page after 3 seconds
+        function autoRedirect() {
+            setTimeout(() => {
+                window.location.href = "/xss";
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Cyber Heist</h1>
+        <p>
+            "You have gained access to the target server. Your mission is to uncover the vault key hidden in the system.
+            you may have to inject some commands. Once you have the vault key, input it below to proceed."
+        </p>
+
+        <!-- Inject Command -->
+        <form method="POST">
+            <div class="input-container">
+                <input
+                    type="text"
+                    name="ip"
+                    class="input-field"
+                    placeholder="Enter IP address)"
+                >
+                <button type="submit" name="inject_command">Submit Command</button>
+            </div>
+        </form>
+
+        <!-- Display Command Results -->
+        {% if output %}
+            <p class="success">{{ output }}</p>
+        {% endif %}
+
+        <!-- Submit Vault Key -->
+        <form method="POST">
+            <div class="input-container">
+                <input
+                    type="text"
+                    name="vault_key"
+                    class="input-field"
+                    placeholder="Enter vault key"
+                >
+                <button type="submit" name="submit_vault_key">Submit Vault Key</button>
+            </div>
+        </form>
+
+        <!-- Messages -->
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% elif success %}
+            <p class="success">{{ success }}</p>
+            <script>autoRedirect();</script>
+        {% endif %}
+    </div>
+</body>
+</html>
+

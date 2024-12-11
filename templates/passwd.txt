@@ -1,0 +1,21 @@
+root:x:0:0:root:/root:/bin/bash
+john:x:1001:1001:John Doe:/home/john:/bin/bash
+alice:x:1002:1002:Alice:/home/alice:/bin/bash
+dave:x:1003:1003:Dave:/home/dave:/bin/bash
+mary:x:1004:1004:Mary:/home/mary:/bin/bash
+steve:x:1005:1005:Steve:/home/steve:/bin/bash
+lucy:x:1006:1006:Lucy:/home/lucy:/bin/bash
+admin:x:1007:1007:Administrator:/home/admin:/bin/bash
+Regan:x:1008:1008:Administrator:/home/regan:/bin/bash
+george:x:1009:1009:George:/home/george:/bin/bash
+jane:x:1010:1010:Jane:/home/jane:/bin/bash
+tom:x:1011:1011:Tom:/home/tom:/bin/bash
+harry:x:1012:1012:Harry:/home/harry:/bin/bash
+emma:x:1013:1013:Emma:/home/emma:/bin/bash
+peter:x:1014:1014:Peter:/home/peter:/bin/bash
+lucas:x:1015:1015:Lucas:/home/lucas:/bin/bash
+sarah:x:1016:1016:Sarah:/home/sarah:/bin/bash
+chris:x:1017:1017:Chris:/home/chris:/bin/bash
+olivia:x:1018:1018:Olivia:/home/olivia:/bin/bash
+michael:x:1019:1019:Michael:/home/michael:/bin/bash
+

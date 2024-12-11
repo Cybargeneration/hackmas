@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Cracking Challenge</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('/static/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        .hidden-hash {
+            font-size: 0.1px;
+            color: transparent;
+        }
+        .input-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .input-field {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .hint-btn {
+            background-color: #f0ad4e;
+        }
+        .hint-btn:hover {
+            background-color: #ec971f;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 16px;
+            color: lightgreen;
+        }
+        .error {
+            margin-top: 20px;
+            font-size: 16px;
+            color: red;
+        }
+    </style>
+    <script>
+        function showHint() {
+            alert("Hint: The codes are right in front of you! 🔍 Goodluck");
+        }
+
+        function autoRedirect() {
+            setTimeout(() => {
+                window.location.href = "/file_inclusion";
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Email Message</h1>
+        <p>From: Santa Claus &lt;santa@northpole.com&gt;</p>
+        <p>To: Winston@cyberday.day</p>
+        <p>Subject: Urgent Assistance Needed!</p>
+        <hr>
+        <p>Dear friend,</p>
+        <p>
+            The elves lost two critical codes. And i really need those codes to deliver some gifts to the children.  Can you find and  decode them?
+        </p>
+        <hr>
+        <!-- Hidden Hashes -->
+        <p class="hidden-hash">{{ hashes[0] }}</p>
+        <p class="hidden-hash">{{ hashes[1] }}</p>
+
+        <!-- Input fields for answers -->
+        <form method="POST">
+            <div class="input-container">
+                <input type="text" name="answer1" class="input-field" placeholder="Enter the first decoded answer" required>
+                <input type="text" name="answer2" class="input-field" placeholder="Enter the second decoded answer" required>
+            </div>
+            <button type="submit">Submit Answers</button>
+            <button type="button" class="hint-btn" onclick="showHint()">Hint</button>
+        </form>
+
+        <!-- Messages -->
+        {% if success %}
+            <p class="message">{{ success }}</p>
+            <script>autoRedirect();</script>
+        {% elif error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS Challenge - Blog Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('/static/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+        .input-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .input-field {
+            margin: 10px 10px 10px 0;
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        textarea {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            resize: none;
+        }
+        button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .blog {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #333;
+            border-radius: 5px;
+            color: lightgray;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+        .success {
+            margin-top: 20px;
+            font-size: 16px;
+            color: lightgreen;
+        }
+    </style>
+    <script>
+        // Redirect to the next page after 3 seconds
+        function autoRedirect() {
+            setTimeout(() => {
+                window.location.href = "/password_cracking";
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Blog Post Submission</h1>
+        <p>
+            "Welcome to the blog page! Submit a blog post and view it below. Can you uncover a vulnerability in the system?"
+        </p>
+
+        <!-- Input Form -->
+        <form method="POST">
+            <div class="input-container">
+                <input
+                    type="text"
+                    name="title"
+                    class="input-field"
+                    placeholder="Blog Title"
+                    required
+                >
+                <textarea
+                    name="content"
+                    rows="5"
+                    placeholder="Write your blog content here..."
+                    required
+                ></textarea>
+                <button type="submit">Submit Blog</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Display Submitted Blogs -->
+    <div class="container">
+        <h2>Blog Posts</h2>
+        {% for blog in blogs %}
+            <div class="blog">
+                <h3>{{ blog.title }}</h3>
+                <p>{{ blog.content|safe }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Success Message -->
+    {% if success %}
+        <p class="success">{{ success }}</p>
+        <script>autoRedirect();</script>
+    {% endif %}
+</body>
+</html>
+
