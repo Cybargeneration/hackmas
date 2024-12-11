@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .details {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            border-left: 5px solid #007bff;
+        }
+        .footer {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hackmas Challenge Completion</h1>
+        <p>Dear Admin,</p>
+        <p>
+            A participant has successfully completed the Hackmas Challenge! Below are the details of the participant:
+        </p>
+        <div class="details">
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p><strong>Email:</strong> {{ email }}</p>
+            <p><strong>Twitter Handle:</strong> {{ twitter_handle }}</p>
+        </div>
+        <p>
+            Please review their submission and verify that all requirements have been met. If their report is valid,
+            proceed with the next steps for acknowledgment and recognition.
+        </p>
+        <p>Best regards,</p>
+        <p><strong>The Hackmas Team</strong></p>
+        <div class="footer">
+            <p>This email was automatically generated. For questions or concerns, please contact the Hackmas Support Team.</p>
+        </div>
+    </div>
+</body>
+</html>
+

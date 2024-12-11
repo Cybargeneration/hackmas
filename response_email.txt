@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        p {
+            font-size: 16px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Congratulations!</h1>
+        <p>Dear Participant,</p>
+        <p>You have successfully completed the Hackmas Challenge!</p>
+        <p>We are thrilled with your accomplishment and encourage you to share your success story. Keep pushing boundaries and learning more in cybersecurity!</p>
+        <div class="footer">
+            <p>Best Regards,<br>Hackmas Team</p>
+        </div>
+    </div>
+</body>
+</html>
+
